@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalwirtschaft Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        button {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personalwirtschaft Quiz</h1>
+    <div id="quiz"></div>
+    <div id="result"></div>
+
+    <script>
+        const quizData = [
+            {
+                question: "PERSONALWIRTSCHAFT: Was hilft dabei, den tatsächlichen Personalbestand einem höheren Sollbestand anzupassen?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: true },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: false },
+                    { text: "Personalentwicklung", correct: false },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was bündelt sämtliche Verwaltungsbereiche, die den MA betreffen? Zentrale Bereiche sind z.B. die Personalstatistik und die Personalakte.",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: false },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: false },
+                    { text: "Personalentwicklung", correct: false },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: true }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was nimmt die Verteilung der Mitarbeiter auf die verschiedenen Arbeitsplätze vor, unter Berücksichtigung der Anforderungen der Stelle, des Unternehmens und der Mitarbeiter?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: false },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: true },
+                    { text: "Personalentlohnung", correct: false },
+                    { text: "Personalentwicklung", correct: false },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was umfasst in erster Linie die Berechnung der Löhne und Gehälter der MA sowie die Erstellung der Gehaltsabrechnung?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: false },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: true },
+                    { text: "Personalentwicklung", correct: false },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was sorgt dafür, dass die Gesundheit der MA verbessert und die betriebliche Leistungsfähigkeit optimiert wird, z.B. durch Sportangebote oder Ernährungsberatung?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: false },
+                    { text: "Personalbetreuung", correct: true },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: false },
+                    { text: "Personalentwicklung", correct: false },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was hilft bei der Aufgabe, die Leistungen der MA einzuschätzen, um sie optimal einzusetzen und ihre Motivation zu steigern?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: false },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: true },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: false },
+                    { text: "Personalentwicklung", correct: false },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was ist für die Gewinnung von Personal verantwortlich, nachdem ein UN einen Personalbedarf festgestellt hat?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: true },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: false },
+                    { text: "Personalentwicklung", correct: false },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was beinhaltet als weitere Tätigkeiten auch die Entwicklung gerechter Entlohnungsmöglichkeiten und die Ermittlung der Personalkosten?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: false },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: true },
+                    { text: "Personalentwicklung", correct: false },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was hat zum Ziel, den MA die Qualifikationen zu vermitteln, die sie zur bestmöglichen Wahrnehmung ihrer jetzigen und zukünftigen Aufgaben benötigen?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: false },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: false },
+                    { text: "Personalentwicklung", correct: true },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was hilft dabei, einzuschätzen wie groß der Personalbedarf in Zukunft sein wird, um die Unternehmensziele zu erreichen?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: true },
+                    { text: "Personalbeschaffung", correct: false },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: false },
+                    { text: "Personalentwicklung", correct: false },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was kümmert sich um den Abbau einer Personalüberdeckung unter Berücksichtigung quantitativer und qualitativer Aspekte?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: false },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: false },
+                    { text: "Personalentwicklung", correct: false },
+                    { text: "Personalfreisetzung", correct: true },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            },
+            {
+                question: "PERSONALWIRTSCHAFT: Was umfasst alle Maßnahmen zur Förderung der individuellen beruflichen Entwicklung der MA, unter Berücksichtigung ihrer persönlichen Interessen?",
+                answers: [
+                    { text: "Personalbedarfsplanung", correct: false },
+                    { text: "Personalbeschaffung", correct: false },
+                    { text: "Personalbetreuung", correct: false },
+                    { text: "Personalbeurteilung", correct: false },
+                    { text: "Personaleinsatzplanung", correct: false },
+                    { text: "Personalentlohnung", correct: false },
+                    { text: "Personalentwicklung", correct: true },
+                    { text: "Personalfreisetzung", correct: false },
+                    { text: "Personalführung", correct: false },
+                    { text: "Personalverwaltung", correct: false }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const quizContainer = document.getElementById('quiz');
+            const question = quizData[currentQuestion];
+            
+            let quizHTML = `
+                <div class="question">
+                    <h2>Frage ${currentQuestion + 1} von ${quizData.length}</h2>
+                    <p>${question.question}</p>
+                    ${question.answers.map((answer, index) => `
+                        <button onclick="checkAnswer(${index})">${answer.text}</button>
+                    `).join('')}
+                </div>
+            `;
+            
+            quizContainer.innerHTML = quizHTML;
+        }
+
+        function checkAnswer(answerIndex) {
+            const question = quizData[currentQuestion];
+            if (question.answers[answerIndex].correct) {
+                score++;
+                document.getElementById('result').textContent = "Richtig!";
+            } else {
+                document.getElementById('result').textContent = "Falsch. Die richtige Antwort war: " + 
+                    question.answers.find(a => a.correct).text;
+            }
+            
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                setTimeout(loadQuestion, 2000);
+            } else {
+                showFinalResult();
+            }
+        }
+
+        function showFinalResult() {
+            const quizContainer = document.getElementById('quiz');
+            quizContainer.innerHTML = `
+                <h2>Quiz beendet!</h2>
+                <p>${score} von ${quizData.length} Fragen</p>
+            `;
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
